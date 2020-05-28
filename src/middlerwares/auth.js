@@ -4,7 +4,7 @@ const isAuth = (req, res, next) => {
   try {
     const { token } = req.headers;
     if (token) {
-      jwt.verify(token, process.env.JWT_SECRET);
+      const data = jwt.verify(token, process.env.JWT_SECRET);
       next();
     } else {
       throw {
